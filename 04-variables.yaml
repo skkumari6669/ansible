@@ -1,0 +1,12 @@
+- name: variables to print
+  hosts: web
+  vars: # play level means global level we can access in all tasks where we want
+    COURSE: "Devops with AWS"
+    DURATION: "120 Hrs"
+    TRAINER: "Sivakumar Reddy"
+  tasks: 
+    - name: print the msg
+      ansible.builtin.debug:
+          msg: "Hi, iam learning {{COURSE}} Duration is: {{DURATION}} Trainer is: {{TRAINER}}"
+
+ 

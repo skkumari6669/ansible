@@ -1,0 +1,36 @@
+- name: variables to print
+  hosts: web
+  vars: # play level means global level we can access in all tasks where we want
+    COURSE: "Devops with AWS from play level"
+    DURATION: "120 Hrs"
+    TRAINER: "Sivakumar Reddy"
+  vars_files:
+    - vars.yaml 
+  vars_prompt:
+    - name: COURSE
+      prompt: please enter COURSE  
+      private: false
+    - name: DURATION
+      prompt: Please enter DURATION
+      private: false
+    - name: TRAINER
+      prompt: Please enter TRAINER  
+      private: false
+  tasks:
+    - name: print the msg 
+      vars: # task level vars overrides play levle vars
+        COURSE: "Devops with AWS from task level"
+        DURATION: "140 Hrs"
+        TRAINER: "Sivakumar Reddy"
+      ansible.builtin.debug:
+          msg: "Hi, iam learning {{COURSE}}"
+
+# 1st preference is run time args
+# 2nd preference is task level
+# 3rd preference is from var files
+# 4th preference is run time read and printing from prompt
+# 5th preference is play level
+# 6th preference is inventory level
+# 7th preference is role based level later will discuss for this
+
+  

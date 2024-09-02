@@ -1,0 +1,6 @@
+- name: variables to print
+  hosts: web 
+  tasks: 
+    - name: print the msg
+      ansible.builtin.debug:
+          msg: "Hello {{NAME}}, Good {{GREETINGS}}"  # enter args at run time with extra option -e "NAME=RAMES GREETINS=GOODMORNING"

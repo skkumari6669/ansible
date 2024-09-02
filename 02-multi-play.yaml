@@ -1,0 +1,15 @@
+# In play book we generally write single play. But for our theoritical we can create multiple plays in single playbook
+- name: PLAY-01
+  host: web
+  tasks:
+    - name: PLAY-01 TASK-01
+      ansible.builtin.debug:
+        msg: "Hello i am from PLAY-01 performing task-01"
+
+- name: PLAY-02
+  host: web
+  tasks:
+    - name: PLAY-02 TASK-01
+      ansible.builtin.debug:
+        msg: "Hello i am from PLAY-02 performing task-01"
+

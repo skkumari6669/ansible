@@ -1,0 +1,9 @@
+- name: Ping the server
+  hosts: web #which server want to connect
+  tasks: # List of plays/modules/collections
+    - name: ping the servers
+      ansible.builtin.ping:
+
+
+# In run time how to execute this yaml file
+# ansible-playbook -i inventory.ini -e ansible_username=ec2_user -e ansible_password=DevOps321 01-ping.yaml
