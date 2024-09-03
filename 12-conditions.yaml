@@ -1,0 +1,18 @@
+- name: conditions in ansible
+  hosts: local
+  connection: local
+  vars_promt:
+  - name: number
+    prompt: please enter number
+    private: false
+  tasks: # list of plays/modules
+  - name: check condition given number is less than 10
+    ansible.builtin.debug:
+      msg: "Given number {{ number}} is less than 10"
+    when: number | int < 10
+  
+  - name: check the condition given number is greater than are equal to 10
+    ansible.builtin.debug:
+      msg: "Given number {{ number }} is greater than are equal to 10" 
+    when: number | int >= 10   
+       
