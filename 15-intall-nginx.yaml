@@ -2,9 +2,9 @@
   hosts: web
   become: yes
   tasks:
-  - name: print the stats
-    ansible.builtin.debug:
-      msg: "{{ ansible_facts }}"
+  # - name: print the stats
+  #   ansible.builtin.debug:
+  #     msg: "{{ ansible_facts }}"
 
   - name: install nginx if redhat
     ansible.builtin.dnf:
