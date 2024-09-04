@@ -5,4 +5,51 @@
   - name: print the default vars
     ansible.builtin.debug:
       msg: "Hello {{ name | default('Ansible') }}"
-      
+
+  - name: convert to uppercase
+    vars:
+      greetings: "Hello Ramesh"
+    ansible.builtin.debug:
+      msg: "Hello {{ greetings | upper }}"   
+
+  - name: convert to lowercase
+    vars:
+      greetings: "Hello Ramesh"
+    ansible.builtin.debug:
+      msg: "Hello {{ greetings | lower }}"            
+
+  - name: print unique numbers
+    vars:
+      numbers: [1,2,3,3,3,4,4,4,5,6,7,8,8,8]
+    ansible.builtin.debug:
+      msg: "unique numbers are: {{ numbers | unique }}" 
+
+  - name: print min and max numbers
+    vars:
+      numbers: [1,2,3,4,5,6,22,45,11]
+    ansible.builtin.debug:
+      msg: "max numbers are: {{ numbers | max }}, min numbers are: {{ numbers | min }}"
+
+  - name: convert map to list
+    vars:
+      course:
+        name: "Devops with Aws"  
+        duration: 120 Hrs
+        trainer: "siva kumar"
+    ansible.builtin.debug:
+      msg: "map to list vars: {{ course | dict2items }}"   
+
+  - name: convert list to map
+    vars:
+      course:
+      - { "key": "name" , "value": "Devops with Aws" }
+      - { "key": "duration" , "value": "120 Hrs" }
+      - { "key": "trainer" , "value": "siva kumar" } 
+    ansible.builtin.debug:
+      msg: "list to map vars: {{ course | items2dict }}"        
+
+  - name: check ip address is proper or not
+    vars:
+      myip: 345:123:67:1
+    ansible.builtin.debug:
+      msg: "{{ myip | ansible.utils.ipv4 }}"      

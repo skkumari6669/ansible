@@ -1,0 +1,11 @@
+- name: command vs shell
+  hosts: local
+  conncetion: local
+  tasks:
+  - name: execute the command
+   # ansible.builtin.command: ls -ltr > /tmp/output.txt # it will not work
+    ansible.builtin.shell: ls -ltr > /tmp/output.txt 
+
+  - name: check the process
+    #ansible.builtin.command: ps -ef | grep ssh
+    ansible.builtin.shell: ps -ef | grep ssh
