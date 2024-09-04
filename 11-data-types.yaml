@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    Course: "Devops with aws"
+    course: "Devops with aws"
     duration: 120
     topics:
     - Linux: commands
