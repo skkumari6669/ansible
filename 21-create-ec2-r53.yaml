@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    subnet_id: "subnet-05948b07e44f52700"
+    subnet_id: subnet-05948b07e44f52700
     sg_id: "sg-0d0763baddbde89bd"
     ami_id: "ami-09c813fb71547fc4f"
     instances:
@@ -18,7 +18,6 @@
       instance_type: "t2.micro"
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
-
     loop: "{{ instances }}"
     register: ec2_instances
   #   # while running this task python will ask install required dependencies like pip3.9 install botocore bot3
