@@ -2,25 +2,25 @@
   hosts: local
   connection: local
   vars:
-    # subnet_id: vpc-0c87ee593ce17124e 
+    subnet_id: "subnet-05948b07e44f52700"
     sg_id: "sg-0d0763baddbde89bd"
-    # ami_id: 
+    ami_id: "ami-09c813fb71547fc4f"
     instances:
     - mysql
-    # - backend
-    # - frontend
+    - backend
+    - frontend
     # zone: devops81s.online
   tasks:                        
   - name: create ec2 instances 
     amazon.aws.ec2_instance:
-      name: {{ item }}
-      # vpc_subnet_id: "{{ subnet_id }}"
-      instance_type: t3.small
+      name: "{{ item }}"
+      vpc_subnet_id: "{{ subnet_id }}"
+      instance_type: "t2.micro"
       security_group: "{{ sg_id }}"
-      # image_id: "{{ ami-id }}"
+      image_id: "{{ ami-id }}"
 
     loop: "{{ instances }}"
-  #   register: ec2_instances
+    register: ec2_instances
   #   # while running this task python will ask install required dependencies like pip3.9 install botocore bot3
   #   # credentials will ask create IAM name with ansible and down the csv file
   #   # In command line type aws configuration and give credentials and us-east-1
